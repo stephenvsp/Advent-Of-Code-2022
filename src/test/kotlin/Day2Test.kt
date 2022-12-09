@@ -19,6 +19,6 @@ internal class Day2Test {
 
         val ans = day2.part2()
 
-        assertEquals(0, ans)
+        assertEquals(12767, ans)
     }
 }
