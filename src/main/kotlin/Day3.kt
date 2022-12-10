@@ -28,19 +28,12 @@ class Day3 {
     fun part2(): Int {
         val lines = File("src/main/resources/input3.txt").readLines()
 
-        return lines.chunked(3).sumOf{
-            val shared = it.reduce { acc, s ->
-                acc.toSet().intersect(s.toSet()).toString()
-            }[1]
+        return lines.chunked(3).sumOf{ (a, b, c) ->
 
-           val code = shared.code
+            val shared = a.toSet().intersect(b.toSet().intersect(c.toSet())).first()
 
-            if (shared.isUpperCase()) {
-                code - 38
-            }
-            else {
-                code - 96
-            }
+            if (shared.isUpperCase()) shared - 'A' + 27 else shared - 'a' + 1
+
         }
 
 
