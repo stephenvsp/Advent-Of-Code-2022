@@ -5,35 +5,29 @@ import java.io.File
 fun day4part1(): Int {
     val lines = File("src/main/resources/input4.txt").readLines()
 
-    var count = 0
-
-    lines.forEach() {
+    return lines.count {
         val (lower1, upper1, lower2, upper2) = Regex("^(\\d+)-(\\d+),(\\d+)-(\\d+)$").find(it)!!.destructured
 
         val range1 = (lower1.toInt()..upper1.toInt()).toSet()
         val range2 = (lower2.toInt()..upper2.toInt()).toSet()
-        if (range1.containsAll(range2) || range2.containsAll(range1)) count++
-    }
 
-    return count
+        range1.containsAll(range2) || range2.containsAll(range1)
+    }
 }
 
 
 fun day4part2(): Int {
     val lines = File("src/main/resources/input4.txt").readLines()
 
-    var count = 0
 
-    lines.forEach() {
+    return lines.count {
         val (lower1, upper1, lower2, upper2) = Regex("^(\\d+)-(\\d+),(\\d+)-(\\d+)$").find(it)!!.destructured
 
         val range1 = (lower1.toInt()..upper1.toInt()).toSet()
         val range2 = (lower2.toInt()..upper2.toInt()).toSet()
 
-        if (range1.intersect(range2).isNotEmpty()) count++
+        range1.intersect(range2).isNotEmpty()
     }
-
-    return count
 }
 
 
