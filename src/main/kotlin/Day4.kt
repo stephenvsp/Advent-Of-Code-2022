@@ -11,7 +11,7 @@ fun day4part1(): Int {
         val range1 = (lower1.toInt()..upper1.toInt()).toSet()
         val range2 = (lower2.toInt()..upper2.toInt()).toSet()
 
-        range1.containsAll(range2) || range2.containsAll(range1)
+        ((range1 union range2).size == maxOf(range1.size, range2.size))
     }
 }
 
@@ -26,7 +26,7 @@ fun day4part2(): Int {
         val range1 = (lower1.toInt()..upper1.toInt()).toSet()
         val range2 = (lower2.toInt()..upper2.toInt()).toSet()
 
-        range1.intersect(range2).isNotEmpty()
+        (range1 intersect range2).isNotEmpty()
     }
 }
 
