@@ -49,8 +49,21 @@ fun day5part1(): String {
     return containers.map { it.first() }.joinToString("")
 }
 
-fun day5part2(): Int {
-    return 0
+fun day5part2(): String {
+    val containers = getContainers()
+    val instructions = getInstructions()
+
+    instructions.forEach { (num, origin, destination) ->
+
+        var toMove = mutableListOf<Char>()
+        repeat(num) {
+            toMove.add(containers[origin].removeFirst())
+        }
+        toMove.reversed().forEach {
+            containers[destination].addFirst(it)
+        }
+    }
+    return containers.map { it.first() }.joinToString("")
 }
 
 fun main() {
