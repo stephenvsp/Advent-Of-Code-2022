@@ -24,17 +24,15 @@ fun getContainers(): List<ArrayDeque<Char>> {
     return containers
 }
 
-fun getInstructions(): List<List<Int>> {
+fun getInstructions(): List<Triple<Int, Int, Int>> {
     val lines = readFile()
 
-    var instructions = mutableListOf<List<Int>>()
 
-    lines.takeLastWhile { it.isNotEmpty() }
-        .forEach {
+    return lines.takeLastWhile { it.isNotEmpty() }
+        .map {
             val (num, origin, destination) = Regex("^move (\\d+) from (\\d+) to (\\d+)$").find(it)!!.destructured
-            instructions.add(listOf(num.toInt(), origin.toInt() - 1, destination.toInt() - 1))
+            Triple(num.toInt(), origin.toInt() - 1, destination.toInt() - 1)
         }
-    return instructions
 }
 
 fun day5part1(): String {
